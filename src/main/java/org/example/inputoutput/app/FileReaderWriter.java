@@ -7,9 +7,11 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class FileReaderWriter {
+    private static final String ROOT_PATH = "src/main/resources/";
+
     public void writeToFile(String fileName, String text) {
         try {
-            Path filePath = Paths.get("src/main/java/org/example/inputoutput/app/", fileName);
+            Path filePath = Paths.get(ROOT_PATH, fileName);
             Path parentDir = filePath.getParent();
             if (parentDir != null && Files.notExists(parentDir)) {
                 Files.createDirectories(parentDir);
@@ -25,8 +27,8 @@ public class FileReaderWriter {
 
     public void copyFile(String sourceFileName, String destinationFileName) {
         try {
-            Path sourcePath = Paths.get("src/main/java/org/example/inputoutput/app/", sourceFileName);
-            Path destPath = Paths.get("src/main/java/org/example/inputoutput/app/", destinationFileName);
+            Path sourcePath = Paths.get(ROOT_PATH, sourceFileName);
+            Path destPath = Paths.get(ROOT_PATH, destinationFileName);
             Path destParentDir = destPath.getParent();
             if (destParentDir != null && Files.notExists(destParentDir)) {
                 Files.createDirectories(destParentDir);
@@ -44,11 +46,13 @@ public class FileReaderWriter {
 
     public void readAndPrintFile(String fileName) {
         try {
-            Path filePath = Paths.get("src/main/java/org/example/inputoutput/app/", fileName);
+            Path filePath = Paths.get(ROOT_PATH, fileName);
             try (Stream<String> lines = Files.lines(filePath)) {
                 System.out.println("Содержимое файла: " + fileName + ":");
                 lines.forEach(System.out::println);
             }
         } catch (IOException e) {
             System.err.println("Ошибка при чтении файла: " + e.getMessage());
-        }}}
+        }
+    }
+}

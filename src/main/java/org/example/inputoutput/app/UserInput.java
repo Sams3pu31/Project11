@@ -13,5 +13,5 @@ public class UserInput {
             System.err.println("Ошибка ввода, проверьте что все введено правильно: " + e.getMessage());
         }
         return "";
-    }}
-
+    }
+}

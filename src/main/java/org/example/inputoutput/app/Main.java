@@ -9,4 +9,5 @@ public class Main {
         fileReaderWriter.writeToFile("input/input.txt", inputText);
         fileReaderWriter.copyFile("input/input.txt", "output/output.txt");
         fileReaderWriter.readAndPrintFile("output/output.txt");
-    }}
+    }
+}
